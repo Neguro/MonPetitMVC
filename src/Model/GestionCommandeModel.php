@@ -8,12 +8,12 @@
 
 namespace APP\Model;
 
-use \PDO;
+use PDO;
 use APP\Entity\Commande;
 use Tools\Connexion;
 
 
-class GestionClientModel 
+class GestionCommandeModel 
 {
     public function findCommande($id) 
     {
@@ -23,6 +23,14 @@ class GestionClientModel
         $ligne->bindValue(':id', $id, PDO::PARAM_INT);
         $ligne->execute();
         return $ligne->fetchObject(Commande::class);
+    }
+    
+    public function findAllCommande()
+    {
+        $unObjetPdo = Connexion::getConnexion();
+        $sql = "select * from COMMANDE";
+        $lignes = $unObjetPdo->query($sql);
+        return $lignes->fetchAll(Commande::class);
     }
     
 }

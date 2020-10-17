@@ -10,24 +10,39 @@ namespace APP\Controller;
 
 use APP\Model\GestionCommandeModel;
 use ReflectionClass;
-use \Exception;
+use Exception;
 
 class GestionCommandeController {
 
-public function chercheUne($param) 
+    public function chercheUne($param) 
     {
-        $model = new GestionClientModel();
+        $model = new GestionCommandeModel();
         $id = filter_var(intval($param["id"]), FILTER_VALIDATE_INT);
-        $unClient = $model->findCommande($id);
-        if ($unClient)
+        $uneCommande = $model->findCommande($id);
+        if ($uneCommande)
         {
             $r = new ReflectionClass($this);
-            include_once PATH_VIEW . str_replace('Controller', 'View', $r->getShortName()) . "/unClient.php";
+            include_once PATH_VIEW . str_replace('Controller', 'View', $r->getShortName()) . "/uneCommande.php";
         }
         else
         {
             throw new Exception("Commande " . $id . " inconnu"); 
         }  
+    }
+    
+    public function chercheToutes()
+    {
+        $model = new GestionCommandeModel();
+        $commandes = $model->findAllCommande();
+        if($commandes)
+        {
+            $r = new ReflectionClass($this);
+            include_once PATH_VIEW . str_replace('Controller', 'View', $r->getShortName()) . "/plusieursCommandes.php";
+        }
+        else
+        {
+            throw new Exception("Aucune Commande a afficher");
+        }
     }
     
 }

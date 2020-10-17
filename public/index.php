@@ -20,7 +20,7 @@ and open the template in the editor.
         try {
             if (empty($BaseController)) {
                 $BaseController = 'Identification';
-                $action = 'Login';
+                $action = 'login';
             }
             $controller = "APP\Controller\\" . $BaseController . 'Controller';
 

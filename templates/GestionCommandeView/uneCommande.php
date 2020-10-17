@@ -5,8 +5,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//include_once PATH_VIEW . "header.html";
 
-define('PATH_CSS',RACINE. "assets".DS."css".DS);
-define('PATH_JS',RACINE. "assets".DS."js".DS);
-define('PATH_VENDOR',RACINE. "vendor".DS);
-define('PATH_VIEW',RACINE. "templates".DS);
+var_dump($uneCommande);
+echo "Id du client : " . $uneCommande->getId();
+
+//include_once PATH_VIEW . "footer.html";
